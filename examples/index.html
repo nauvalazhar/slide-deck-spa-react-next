@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button id="home-btn">Home</button>
+  <button id="about-btn">About</button>
+  <button id="contact-btn">Contact</button>
+
+  <div id="app"></div>
+
+  <script>
+    function homePage() {
+      return {
+        path: '/',
+        html: `<h1>Home</h1>`
+      };
+    }
+
+    function aboutPage() {
+      return {
+        path: '/about',
+        html: `<h1>About Page</h1>`
+      };
+    }
+
+    function contactPage() {
+      return {
+        path: '/contact',
+        html: `<h1>Contact Page</h1>`
+      };
+    }
+
+    function render(target, page) {
+      page = page.call(this);
+
+      // clear the target content first
+      target.innerHTML = '';
+      
+      // convert page's HTML string into DOM element
+      const dom = document.createElement('div');
+      dom.innerHTML = page.html;
+      const element = dom.firstChild;
+      
+      // append the DOM to the target element
+      target.appendChild(element);
+
+      // manipulate browser history
+      window.history.pushState({}, '', page.path.replace(/\//, ''));
+    }
+
+    const target = document.getElementById('app');
+
+    // render first page
+    render(target, homePage);
+
+    document.getElementById('home-btn').addEventListener('click', function() {
+      render(target, homePage);
+    });
+
+    document.getElementById('about-btn').addEventListener('click', function() {
+      render(target, aboutPage);
+    });
+
+
+    document.getElementById('contact-btn').addEventListener('click', function() {
+      render(target, contactPage);
+    });
+  </script>
+
+</body>
+</html>

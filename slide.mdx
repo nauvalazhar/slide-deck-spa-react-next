@@ -1,0 +1,474 @@
+import Layout from './Layout'
+
+# 🌍 ⚛️
+## Single-page Application, React dan Next JS
+
+---
+
+<Layout>
+
+# 🤔
+## Definisi
+
+Single-page Application (SPA) adalah jenis web yang berinteraksi dengan pengguna secara dinamis menulis ulang halaman web saat ini dengan data baru dari server web, ketimbang memuat seluruh halaman baru.
+  
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🧠
+## Contoh
+
+1. Pengguna mengunjungi website
+2. Halaman web muncul
+3. Pengguna klik tombol dengan tujuan pindah halaman
+4. Halaman yang dituju muncul dengan data dan tampilan berbeda dan browser tidak reload
+
+Tapi sebenarnya halaman tersebut tidak benar-benar pindah. Hanya saja ditulis ulang komponen-komponen yang berubah bersamaan dengan data baru.
+
+Demo: https://enterprise.kredibel.co.id/
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🥲
+## Mari Buktikan
+
+### Buktikan dengan inspect element.
+
+Pergi ke DOM tree: `body > div#__next`
+
+Elemen itu saja yang berubah isinya dan browser tidak melakukan reload.
+
+### Lalu kenapa halaman bisa pindah dari `/` ke `/request-demo`?
+
+Itu karena bantuan dari API browser yang namanya History API.
+
+</Layout>
+
+---
+
+<Layout>
+
+# ❓
+## Kok bisa begitu?
+
+Ini karena JavaScript bisa memanipulasi DOM (elemen HTML, maksudnya) pada saat runtime.
+
+Contoh yang paling sering dilihat dari memanipulasi DOM adalah komponen-komponen berikut:
+
+- Carousel
+- Dropdown
+- Modal
+- Toast
+- Image lightbox
+- etc
+
+Sebagai contoh bisa pergi ke https://www.kredibel.co.id/ terus inspect "Produk Bisnis".
+
+</Layout>
+
+---
+
+# 🏞
+## Contoh sederhana SPA
+
+Di sini: https://codepen.io/mhdnauvalazhar/pen/JjNgXXy
+
+---
+
+# 🌍
+## Contoh SPA dengan history
+
+Run ini dulu: `yarn example-spa`
+
+[Buka di sini](http://localhost:3000)
+
+---
+
+<Layout>
+
+# ✨
+## Jadi 
+
+Sederhananya itu SPA hanya memanipulasi DOM dan memanipulasi history browser.
+
+</Layout>
+
+---
+
+
+# ✋
+## Ada pertanyaan dulu nggak sampai sini?
+
+---
+
+# ⚛️
+## React & ReactDOM by Facebook
+
+---
+
+<Layout>
+
+# ⚛️❓
+## Definisi
+
+React adalah JavaScript library untuk membangun user-interfaces atau UI components. React juga bisa digunakan untuk membangun website SPA atau aplikasi mobile.
+
+</Layout>
+
+---
+
+<Layout>
+
+# ✨
+## Examples
+
+- Simple Example: https://codepen.io/mhdnauvalazhar/pen/rNmXLed
+- Interactive Example: https://codepen.io/mhdnauvalazhar/pen/gOWVMWP
+- Form Control Example: https://codepen.io/mhdnauvalazhar/pen/RwVXRBr
+
+Setiap function yang return React element disebut React component.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🤔
+## Kita menggunakan 2 library sebenarnya
+
+1. react.development.js => ini core-nya
+2. react-dom.development.js => ini untuk rendering ke web
+
+## Kenapa dipisah?
+
+Karena React bisa bukan untuk web aja! Bisa untuk mobile, pakai React Native. Atau render ke VR. Bahkan bisa bikin video pakai library Remotion.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🗿
+## BTW, kok ribet sintaksnya?
+
+Sebenarnya itu yang bener-bener React. Karena React == JavaScript.
+
+Tapi, agar memberikan DX yang lebih baik. React punya "syntax-sugar" yang namanya JSX.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🧑💻
+## JSX
+
+JSX adalah HTML-like syntax untuk menulis component React.
+
+Tadinya begini:
+
+```js
+function component() {
+    return React.createElement('h1', null, 'Hello World');
+}
+```
+
+Dengan JSX:
+
+```js
+
+function component() {
+    return <h1>Hello World</h1>;
+}
+```
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🥕
+## Tapi, emangnya kode tadi bakal jalan di browser?
+
+Karena kode tadi bukan kode standar JavaScript, jadi bakal error kalo dijalanin di browser.
+
+Maka dari itu, perlu di-transform pake tool semacam Babel.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 😥
+## Apa lagi nih Babel?
+
+Babel ini tool buat men-transform kode JavaScript modern agar bisa jalan di old browser.
+
+Pada dasarnya sih itu aja.
+
+
+</Layout>
+
+---
+
+<Layout>
+
+# 😇
+## Demo
+
+Buka: https://babeljs.io/repl
+
+Presets: `react`
+
+Kode:
+
+```js
+function component() {
+    return <h1>Hello World</h1>;
+}
+```
+
+</Layout>
+
+---
+
+<Layout>
+
+# 😄
+## Wait, kok Babel bisa transform React?
+
+Kan tadi katanya buat transform modern JavaScript code, supaya support di old browser. Tapi, kok tiba2 bisa buat kode React JSX?
+
+Itu karena Babel punya ekosistem plugin.
+
+React JSX bisa di-trasnform Babel, karena di Babel ada plugin buat transform kode JSX jadi JavaScript standar.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🧠
+## Plugin-nya tuh ini
+
+
+- @babel/plugin-syntax-jsx
+- @babel/plugin-transform-react-jsx
+- @babel/plugin-transform-react-display-name
+
+Sekumpulan plugin di Babel namanya jadi `preset`. Maka dari itu sebelumnya preset `react` di-enable.
+
+Nah, udah paham kan kenapa Babel bisa transform React JSX ke standar JavaScript?
+
+</Layout>
+
+---
+
+<Layout>
+
+# 😎
+## React with JSX Demo
+
+Sekarang demo sebelumnya pake JSX:
+
+- https://codepen.io/mhdnauvalazhar/pen/VwboKvj
+- https://codepen.io/mhdnauvalazhar/pen/YzVmGxV
+- https://codepen.io/mhdnauvalazhar/pen/VwboKMp
+
+</Layout>
+
+---
+
+<Layout>
+
+#  🟩 🟦
+## JSX bisa composition
+
+Example: https://codepen.io/mhdnauvalazhar/pen/mdmNrzX
+
+</Layout>
+
+---
+
+<Layout>
+
+# ☹️
+# Terus bikin SPA-nya gimana?
+
+React pada dasarnya hanya untuk membangun user-interface seperti sebelum-sebelumnya.
+
+Supaya bisa bikin SPA di React, kita butuh yang namanya router.
+
+Dan itu bukan "battery-included" di React.
+
+Jadi gimana?
+
+</Layout>
+
+---
+
+<Layout>
+
+# ✨
+## Pake 3rd party-library
+
+Kita bisa pakai library react-router.
+
+Kayak gini contohnya: https://reactrouter.com/web/example/basic
+
+</Layout>
+
+---
+
+# ✋
+## Sampai sini mau bertanya?
+
+---
+
+# NEXT
+## Next JS by Vercel
+
+
+---
+
+<Layout>
+
+# 🤔
+## Definisi
+
+Next JS adalah framework JavaScript berbasis React untuk membangun website SPA.
+
+Fitur:
+- Pre-rendering (SSR or SSG)
+- API routes
+- File-system routing
+- Fast refresh
+- Built-in CSS support
+- Typescript support
+- Image optimization
+- i18n
+- Code splitting
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🐞
+## "Masalah" pada React untuk SPA
+
+React JS menggunakan teknik rendering client-side.
+
+Tidak ada router by design.
+
+Butuh banyak waktu untuk setup environment, seperti setup webpack contohnya.
+
+Tapi yang paling penting masalah client-side rendering.
+
+</Layout>
+
+---
+
+<Layout>
+
+# 😥
+## Client-side rendering ini apaan lagi?
+
+Jadi ini tuh salah satu teknik rendering di website.
+
+Yang lainnya ada:
+- server-side rendering
+- dan universal rendering
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🏞
+## Visualisasi (old) SSR
+
+https://www.youtube.com/watch?v=0bvo6UKkNDA
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0bvo6UKkNDA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Contohnya: https://kredibel.co.id
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🏞
+## Visualisasi CSR
+
+https://www.youtube.com/watch?v=4-Lel1oaV7M
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4-Lel1oaV7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</Layout>
+
+Contohnya: https://create-react-app.examples.vercel.com/
+
+---
+
+<Layout>
+
+# 🏞
+## Visualisasi universal rendering (modern SSR)
+
+https://www.youtube.com/watch?v=y5CpKiH-3J8
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y5CpKiH-3J8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Contohnya: https://next-learn-starter.vercel.app/
+
+</Layout>
+
+---
+
+<Layout>
+
+# 🧠
+## Disabled JavaScript Browser
+
+CSR: Karena bergantung pada JavaScript, ketika browser disabled JavaScript maka aplikasi akan crash seluruhnya.
+
+SSR: Walaupun JavaScript di-disable oleh browser, website tidak akan crash sepenuhnya.
+
+</Layout>
+
+---
+
+<Layout>
+
+# ✨
+## Live Demo Development
+
+Kita akan live demo Next JS.
+
+- SSR
+- File-system routing
+- API routes
+- Fast-refresh
+- Query ke database Kredibel
+
+</Layout>
+

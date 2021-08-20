@@ -1,0 +1,15 @@
+{
+  "name": "deck-spa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "mdx-deck": "^4.0.0"
+  },
+  "scripts": {
+    "start": "mdx-deck slide.mdx",
+    "example-spa": "lite-server --baseDir=examples",
+    "export": "mdx-deck build slide.mdx"
+  }
+}
